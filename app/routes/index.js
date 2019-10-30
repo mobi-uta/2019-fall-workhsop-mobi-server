@@ -15,6 +15,9 @@ routes.get('/hackathons', async (req, res) => {
   events = events.filter(event => {
     return event.state.toLowerCase() === state.toLowerCase()
   })
+  events.sort((a, b) => {
+    return a.startAndEndDates - b.startAndEndDates
+  })
 
   res.send(events)
 })
